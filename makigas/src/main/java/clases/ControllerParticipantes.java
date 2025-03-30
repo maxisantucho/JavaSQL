@@ -66,4 +66,35 @@ public class ControllerParticipantes {
         }
     }
 
+    public void modificarParticipante(Connection c, String dniParticipante, String nombreParticipante, String apellidoParticipante) {
+        String query = "UPDATE participantes SET apellido = ?, nombre = ? WHERE dni_participante = ?;";
+        try(PreparedStatement ps = c.prepareStatement(query)) {
+            ps.setString(1, apellidoParticipante);
+            ps.setString(2, nombreParticipante);
+            ps.setString(3, dniParticipante);
+            int filaAfectada = ps.executeUpdate();
+            if (filaAfectada == 0) {
+                throw new SQLException("No se pudo modificar el participante con dni: " + dniParticipante);
+            }
+            System.out.println(
+                    "El participante con dni " + dniParticipante + " fue modificado correctamente");
+        } catch(SQLException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
+    public void eliminarParticipante(Connection c, int idParticipante) {
+        String query = "DELETE FROM participantes WHERE id_participante = ?;";
+        try(PreparedStatement ps = c.prepareStatement(query)) {
+            ps.setInt(1, idParticipante);
+            int filaAfectada = ps.executeUpdate();
+            if(filaAfectada == 0) {
+                throw new SQLException("No se pudo eliminar el participante con id " + idParticipante);
+            }
+            System.out.println("El participante con id " + idParticipante + " fue eliminado correctamente");
+        } catch(SQLException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
 }

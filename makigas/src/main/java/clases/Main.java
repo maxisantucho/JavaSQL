@@ -14,8 +14,10 @@ public class Main {
 
         try (Connection c = controller.getConnection(URL, props)) {
 
-            cParticipante.mostrarListaParticipantes(c);
+            //cParticipante.mostrarListaParticipantes(c);
             //cParticipante.insertarParticipante(c);
+            //cParticipante.modificarParticipante(c, "98102345", "Manuel", "Adorni");
+            //cParticipante.eliminarParticipante(c, 16);
 
         } catch (SQLException e) {
             e.printStackTrace(System.out);
