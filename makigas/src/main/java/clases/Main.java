@@ -7,13 +7,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ControllerJDBC controller = new ControllerJDBC();
+        ControllerConnection controller = new ControllerConnection();
+        ControllerParticipantes cParticipante = new ControllerParticipantes();
         String URL = controller.URL;
         Properties props = controller.props;
 
         try (Connection c = controller.getConnection(URL, props)) {
 
-            //controller.mostrarLista(c);
+            cParticipante.mostrarListaParticipantes(c);
+            //cParticipante.insertarParticipante(c);
 
         } catch (SQLException e) {
             e.printStackTrace(System.out);
