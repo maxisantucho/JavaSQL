@@ -54,7 +54,7 @@ public class ControllerCategorias {
     }
 
     public void modificarCategoria(Connection c, String nombre, String sexo, int id) {
-        String query = "UPDATE categorias SET nombre = ?, sexo = ? WHERE id_categoria = ?";
+        String query = "UPDATE categorias SET nombre = ?, sexo = ? WHERE id_categoria = ?;";
         try(PreparedStatement ps = c.prepareStatement(query)) {
             ps.setString(1, nombre);
             ps.setString(2, sexo);
