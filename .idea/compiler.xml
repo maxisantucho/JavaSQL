@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="makigas" />
         <module name="Veterinaria" />
+        <module name="escuela_musica" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
